@@ -28,22 +28,27 @@ This repository contains a single Bash script (`openstack_init.sh`) that automat
 
 ## How to Use
 
-```bash
 ###############################################################################
 # 1. Clone the Repository
 ###############################################################################
+```bash
 git clone https://github.com/ankurgautam90/openstack-init.git
 cd openstack-init
+```
 
 ###############################################################################
 # 2. Make the Script Executable
 ###############################################################################
+```bash
 chmod +x openstack_init.sh
+```
 
 ###############################################################################
 # 3. Run the Script
 ###############################################################################
+```bash
 ./openstack_image_deploy.sh
+```
 
 # The script will prompt:
 # "Are you using Ceph with OpenStack for image storage? (Y/N)"
@@ -60,4 +65,4 @@ openstack user list
 openstack image list
 openstack flavor list
 openstack network list
-
+```
