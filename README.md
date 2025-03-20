@@ -50,7 +50,7 @@ chmod +x openstack_init.sh
 ./openstack_image_deploy.sh
 ```
 
-#The script will prompt:
+The script will prompt:
  "Are you using Ceph with OpenStack for image storage? (Y/N)"
    - Type 'Y' or 'Yes' to skip conversions (Ceph usage).
    - Type 'N' or 'No' to convert Windows and Ubuntu images to QCOW2.
