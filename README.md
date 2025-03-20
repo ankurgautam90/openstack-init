@@ -13,7 +13,7 @@ This repository contains a single Bash script (`openstack_init.sh`) that automat
 
 ## Author and Maintainer
 
-- **Author:** [@Ankur Kumar](https://www.linkedin.com/in/ankurgauti/)
+- **Author:** [Ankur Kumar](https://www.linkedin.com/in/ankurgauti/)
 - **Maintainer:** [@ankurgautam90](https://github.com/ankurgautam90)
 
 
