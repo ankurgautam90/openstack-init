@@ -36,12 +36,12 @@ esac
 
 # --- Define variables ---
 CIRROS_URL="https://download.cirros-cloud.net/0.6.2/cirros-0.6.2-x86_64-disk.img"
-WINDOWS_URL="https://xloud.tech/s3/Cloud-images/Windows_Srv_Std_2022_Eval.raw"
+#WINDOWS_URL="https://xloud.tech/s3/Cloud-images/Windows_Srv_Std_2022_Eval.raw"
 UBUNTU_URL="https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img"
 
 CIRROS_IMG="cirros-0.6.2-x86_64-disk.img"
-WINDOWS_RAW="Windows_Srv_Std_2022_Eval.raw"
-WINDOWS_QCOW2="Windows_Srv_Std_2022_Eval.qcow2"
+#WINDOWS_RAW="Windows_Srv_Std_2022_Eval.raw"
+#WINDOWS_QCOW2="Windows_Srv_Std_2022_Eval.qcow2"
 UBUNTU_IMG="jammy-server-cloudimg-amd64.img"
 UBUNTU_QCOW2="jammy-server-cloudimg-amd64-converted.qcow2"
 
@@ -49,8 +49,8 @@ NETWORK_NAME="Pvt_Net"
 SUBNET_NAME="sb_pvt_net"
 
 # Final image/file variables after conversion or not
-WINDOWS_FINAL="$WINDOWS_RAW"
-WINDOWS_FORMAT="raw"
+#WINDOWS_FINAL="$WINDOWS_RAW"
+#WINDOWS_FORMAT="raw"
 UBUNTU_FINAL="$UBUNTU_IMG"
 UBUNTU_FORMAT="qcow2"  # Official Ubuntu cloud images are typically already QCOW2
 
@@ -87,8 +87,8 @@ download_images() {
     echo "Downloading Cirros image..."
     wget "$CIRROS_URL" -O "$CIRROS_IMG"
 
-    echo "Downloading Windows Server image..."
-    wget "$WINDOWS_URL" -O "$WINDOWS_RAW" --no-check-certificate
+    #echo "Downloading Windows Server image..."
+    #wget "$WINDOWS_URL" -O "$WINDOWS_RAW" --no-check-certificate
 
     echo "Downloading Ubuntu image..."
     wget "$UBUNTU_URL" -O "$UBUNTU_IMG"
@@ -96,10 +96,10 @@ download_images() {
 
 # --- Convert Windows & Ubuntu images if user said "no" for Ceph ---
 convert_images() {
-    echo "Converting Windows raw image to qcow2 format..."
-    qemu-img convert -p -f raw -O qcow2 "$WINDOWS_RAW" "$WINDOWS_QCOW2"
-    WINDOWS_FINAL="$WINDOWS_QCOW2"
-    WINDOWS_FORMAT="qcow2"
+    #echo "Converting Windows raw image to qcow2 format..."
+    #qemu-img convert -p -f raw -O qcow2 "$WINDOWS_RAW" "$WINDOWS_QCOW2"
+    #WINDOWS_FINAL="$WINDOWS_QCOW2"
+    #WINDOWS_FORMAT="qcow2"
 
     echo "Converting Ubuntu image to qcow2 format..."
     # Using '-f qcow2' as input since Ubuntu official is often QCOW2;
@@ -124,11 +124,11 @@ upload_images() {
         --file "$CIRROS_IMG" \
         --public --progress
 
-    echo "Uploading Windows image to OpenStack..."
-    openstack image create "windows-image" \
-        --disk-format "$WINDOWS_FORMAT" --container-format bare \
-        --file "$WINDOWS_FINAL" \
-        --public --progress
+    #echo "Uploading Windows image to OpenStack..."
+    #openstack image create "windows-image" \
+        #--disk-format "$WINDOWS_FORMAT" --container-format bare \
+        #--file "$WINDOWS_FINAL" \
+        #--public --progress
 
     echo "Uploading Ubuntu image to OpenStack..."
     openstack image create "ubuntu-image" \
