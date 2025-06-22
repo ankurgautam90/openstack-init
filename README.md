@@ -47,7 +47,7 @@ chmod +x openstack_init.sh
 ### 3. Run the Script
 ###############################################################################
 ```bash
-./openstack_image_deploy.sh
+./openstack_init.sh
 ```
 
 The script will prompt:
